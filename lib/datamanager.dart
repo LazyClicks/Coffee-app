@@ -28,13 +28,26 @@ class DataManager {
     return _menu!;
   }
 
-  cartAdd(Product p) {
+  cartAdd1(Product p) {
     for (var item in cart) {
       if (item.product.id == p.id) {
         item.quantity++;
       } else {
         cart.add(ItemInCart(product: p, quantity: 1));
       }
+    }
+  }
+
+  cartAdd(Product p) {
+    bool found = false;
+    for (var item in cart) {
+      if (item.product.id == p.id) {
+        item.quantity++;
+        found = true;
+      }
+    }
+    if (!found) {
+      cart.add(ItemInCart(product: p, quantity: 1));
     }
   }
 

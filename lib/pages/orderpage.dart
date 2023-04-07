@@ -3,22 +3,41 @@ import 'package:flutter_application_2/datamanager.dart';
 
 import '../datamodel.dart';
 
-class OrderPage extends StatelessWidget {
+class OrderPage extends StatefulWidget {
   final DataManager dataManager;
   const OrderPage({super.key, required this.dataManager});
 
   @override
+  State<OrderPage> createState() => _OrderPageState();
+}
+
+class _OrderPageState extends State<OrderPage> {
+  @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: dataManager.cart.length,
-        itemBuilder: (context, index) {
-          var item = dataManager.cart[index];
-          return OrderItem(
-              item: item,
-              onRemove: (p) {
-                dataManager.cartRemove(p);
-              });
-        });
+    if (widget.dataManager.cart.isEmpty) {
+      return Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text("cart is empty"),
+          ],
+        ),
+      );
+    } else {
+      return ListView.builder(
+          itemCount: widget.dataManager.cart.length,
+          itemBuilder: (context, index) {
+            var item = widget.dataManager.cart[index];
+            return OrderItem(
+                item: item,
+                onRemove: (p) {
+                  setState(() {
+                    widget.dataManager.cartRemove(p);
+                  });
+                });
+          });
+    }
   }
 }
 

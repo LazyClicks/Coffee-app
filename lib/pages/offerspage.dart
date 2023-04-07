@@ -26,6 +26,9 @@ class OffersPage extends StatelessWidget {
         Offer(
             name: "The greatest Coffee",
             description: "i swear i can stop whenever i want"),
+        Offer(
+            name: "The greatest Coffee",
+            description: "i swear i can stop whenever i want"),
       ],
     );
   }

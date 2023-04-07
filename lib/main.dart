@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Coffe Masters',
       theme: ThemeData(
         useMaterial3: true,
-        // primarySwatch: Colors.brown,
+        primarySwatch: Colors.brown,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.brown),
       ),
       home: const MyHomePage(),
